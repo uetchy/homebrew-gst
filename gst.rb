@@ -1,13 +1,19 @@
-require 'formula'
+require "formula"
 
 class Gst < Formula
-  VERSION='1.0.0'
+  version "1.1.0"
 
-  version VERSION
-  url "https://github.com/uetchy/gst/releases/download/v#{VERSION}/darwin_amd64.zip"
-  sha256 "be5bdc3c2a563e0992614857e6dcebfdac7a489a8d7122045353c477f0b5e887"
+  
+  if Hardware.is_64_bit?
+    url "https://github.com/uetchy/gst/releases/download/v1.1.0/gst_darwin_amd64.zip"
+    sha256 "73157f230d259a5f192399124c1e9f9e9e9621ba"
+  else
+    url "https://github.com/uetchy/gst/releases/download/v1.1.0/gst_darwin_386.zip"
+    sha256 "c5778d2c416b00081de8b003d249febf495232d2"
+  end
+  
 
   def install
-    bin.install 'gst'
+    bin.install "gst"
   end
 end
